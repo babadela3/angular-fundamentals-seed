@@ -8,8 +8,11 @@ import { Component } from '@angular/core';
       <h1 [innerHTML]="title"></h1>
       <input 
         type="text" 
-        [value]="name"
-        (input)=eventInput($event)>
+        [ngModel]="name"
+        (ngModelChange)=eventChange($event)>
+      <input 
+        type="text" 
+        [(ngModel)]="name">
       <div> {{ name }} </div>
       <button 
         (click)=eventClick()>
@@ -26,8 +29,8 @@ export class AppComponent {
     this.name = "Name";
   }
 
-  eventInput(event: any) {
-    this.name = event.target.value;
+  eventChange(value: string) {
+    this.name = value;
   }
 
   constructor() {
