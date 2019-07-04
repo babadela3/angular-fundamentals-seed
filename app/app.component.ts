@@ -6,16 +6,10 @@ import { Component } from '@angular/core';
   template: `
     <div class="app">
       <h1 [innerHTML]="title"></h1>
-      <input 
-        type="text" 
-        [ngModel]="name"
-        (ngModelChange)=eventChange($event)>
-      <input 
-        type="text" 
-        [(ngModel)]="name">
+      <input type="text" #input> 
       <div> {{ name }} </div>
       <button 
-        (click)=eventClick()>
+        (click)=eventClick(input.value)>
         Change name
       </button>
     </div>
@@ -25,11 +19,7 @@ export class AppComponent {
   name: string = 'Name';
   title: string;
 
-  eventClick(){
-    this.name = "Name";
-  }
-
-  eventChange(value: string) {
+  eventClick(value: string){
     this.name = value;
   }
 
