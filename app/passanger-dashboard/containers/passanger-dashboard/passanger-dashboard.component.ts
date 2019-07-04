@@ -6,6 +6,8 @@ import { Passanger } from './../models/passanger.interface';
     styleUrls: ['passanger-dashboard.component.scss'],
     template: `
         <div class="app">
+            <passanger-count></passanger-count>
+            <passanger-detail></passanger-detail>
             <h1>Airline passagers {{ passangers.length }}</h1>
             <ul>
                 <li *ngFor="let passanger of passangers; let i = index;">
