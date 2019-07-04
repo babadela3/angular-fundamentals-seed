@@ -6,12 +6,13 @@ import { Component } from '@angular/core';
   template: `
     <div class="app">
       <h1 [innerHTML]="title"></h1>
-      <input type="text" #input> 
-      <div> {{ name }} </div>
-      <button 
-        (click)=eventClick(input.value)>
-        Change name
-      </button>
+      <input 
+        type="text"
+        [value]="name"
+        (input)=handleChange($event.target.value)> 
+      <div *ngIf="name.length > 2"> 
+        Searching for ... {{ name }} 
+      </div>
     </div>
   `
 })
@@ -19,7 +20,7 @@ export class AppComponent {
   name: string = 'Name';
   title: string;
 
-  eventClick(value: string){
+  handleChange(value: string){
     this.name = value;
   }
 
