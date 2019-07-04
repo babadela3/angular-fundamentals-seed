@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Passanger } from './../models/passanger.interface';
 
 @Component({
@@ -25,35 +25,38 @@ import { Passanger } from './../models/passanger.interface';
         </div>
         `
 }) 
-export class PassangerDashboardComponent {
-    passangers: Passanger[] = [
-        {
-          id: 1,
-          name: "Andrew",
-          checkIn: true,
-          checkInDate: 1490742000000,
-          children: [{name: "Sally", age: 12}, {name: "Rick", age: 7}]
-        },
-        {
-          id: 2,
-          name: "Robert",
-          checkIn: false,
-          checkInDate: null,
-          children: null
-        },
-        {
-          id: 3,
-          name: "Bob",
-          checkIn: true,
-          checkInDate: 1490742000000,
-          children: null
-        },
-        {
-          id: 4,
-          name: "Tom",
-          checkIn: false,
-          checkInDate: null,
-          children: [{name: "Mason", age: 2}]
-        }
-      ]
+export class PassangerDashboardComponent implements OnInit{
+    passangers: Passanger[]; 
+    ngOnInit() {
+        this.passangers = [
+            {
+              id: 1,
+              name: "Andrew",
+              checkIn: true,
+              checkInDate: 1490742000000,
+              children: [{name: "Sally", age: 12}, {name: "Rick", age: 7}]
+            },
+            {
+              id: 2,
+              name: "Robert",
+              checkIn: false,
+              checkInDate: null,
+              children: null
+            },
+            {
+              id: 3,
+              name: "Bob",
+              checkIn: true,
+              checkInDate: 1490742000000,
+              children: null
+            },
+            {
+              id: 4,
+              name: "Tom",
+              checkIn: false,
+              checkInDate: null,
+              children: [{name: "Mason", age: 2}]
+            }
+        ]
+    }
 }
