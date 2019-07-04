@@ -35,6 +35,30 @@ interface Passanger {
           {{ i }} {{ passanger.name }}
         </li>
       </ul>
+
+      <h1>Airline passagers {{ passangers.length }}</h1>
+      <ul>
+        <li *ngFor="let passanger of passangers; let i = index;">
+          <span 
+            class="status"
+            [style.backgroundColor]="(passanger.checkIn ? '#00ff00' : '#0000ff')">
+          </span>
+          {{ i }} {{ passanger.name }}
+        </li>
+      </ul>
+
+      <h1>Airline passagers {{ passangers.length }}</h1>
+      <ul>
+        <li *ngFor="let passanger of passangers; let i = index;">
+          <span 
+            class="status"
+            [ngStyle]="{
+              'backgroundColor' : passanger.checkIn ? 'green' : 'pink'
+            }">
+          </span>
+          {{ i }} {{ passanger.name }}
+        </li>
+      </ul>
     </div>
   `
 })
