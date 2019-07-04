@@ -1,30 +1,46 @@
 import { Component } from '@angular/core';
 
+interface Passanger {
+  id: number,
+  name: string,
+  checkIn: boolean
+}
+
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      <h1 [innerHTML]="title"></h1>
-      <input 
-        type="text"
-        [value]="name"
-        (input)=handleChange($event.target.value)> 
-      <div *ngIf="name.length > 2"> 
-        Searching for ... {{ name }} 
-      </div>
+      <h1>Airline passagers {{ passangers.length }}</h1>
+      <ul>
+        <li *ngFor="let passanger of passangers; let i = index;">
+          {{ i }} {{ passanger.name }}
+        </li>
+      </ul>
     </div>
   `
 })
 export class AppComponent {
-  name: string = 'Name';
-  title: string;
-
-  handleChange(value: string){
-    this.name = value;
-  }
-
-  constructor() {
-    this.title = "Title"
-  }
+  passangers: Passanger[] = [
+    {
+      id: 1,
+      name: "Andrew",
+      checkIn: true
+    },
+    {
+      id: 2,
+      name: "Robert",
+      checkIn: false
+    },
+    {
+      id: 3,
+      name: "Bob",
+      checkIn: true
+    },
+    {
+      id: 4,
+      name: "Tom",
+      checkIn: false
+    }
+  ]
 }
