@@ -1,11 +1,10 @@
 {
   "passangers": [
     {
+      "name": "Bianca",
       "id": 1,
-      "name": "Bina",
-      "checkIn": true,
-      "checkInDate": 1490742000000,
-      "baggage": "none"
+      "checkIn": false,
+      "baggage": "hand-only"
     },
     {
       "id": 2,

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Passanger } from './../../models/passanger.interface';
 import { Baggage } from './../../models/baggage.interface';
@@ -7,7 +7,7 @@ import { Baggage } from './../../models/baggage.interface';
     selector: 'passanger-form',
     styleUrls: ['passanger-form.component.scss'],
     template: `
-    <form #form="ngForm" nonvalidate>
+    <form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" nonvalidate>
         {{ detail | json }}
         <div>
 
@@ -16,9 +16,9 @@ import { Baggage } from './../../models/baggage.interface';
                 type="text"
                 name="name"
                 required
-                #fullName="ngModel"
+                #name="ngModel"
                 [ngModel]="detail?.name">
-            <div *ngIf="fullName.errors?.required" class="error">
+            <div *ngIf="name.errors?.required" class="error">
                 Name is required
             </div>
         </div>
@@ -74,6 +74,9 @@ export class PassangerFormComponent {
     @Input()
     detail: Passanger;
 
+    @Output()
+    update: EventEmitter<Passanger> = new EventEmitter();
+
     baggage: Baggage[] = [
         {
             key: "none",
@@ -97,5 +100,11 @@ export class PassangerFormComponent {
         if(checkedIn) {
             this.detail.checkInDate = Date.now();
         } 
+    }
+
+    handleSubmit(passanger: Passanger, isValid: boolean) {
+        if(isValid) {
+            this.update.emit(passanger);
+        }
     }
 }
