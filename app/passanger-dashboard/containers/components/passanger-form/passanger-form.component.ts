@@ -25,6 +25,31 @@ import { Passanger } from './../../models/passanger.interface';
                 [ngModel]="detail?.id">
         </div>
 
+        <div>
+            <input
+                type="radio"
+                [value]="true"
+                name="checkIn"
+                [ngModel]="detail?.checkIn"
+                (ngModelChange)=verifyCheckIn($event)>
+                Yes
+            <input
+                type="radio"
+                [value]="false"
+                name="checkIn"
+                [ngModel]="detail?.checkIn"
+                (ngModelChange)=verifyCheckIn($event)>
+                No
+        </div>
+
+        <div *ngIf="form.value.checkIn">
+            Check in date:
+            <input
+                type="number"
+                name="checkInDate"
+                [ngModel]="detail?.checkInDate">
+        </div>    
+
         {{form.value|json}}
     </form>    
     `
@@ -32,4 +57,10 @@ import { Passanger } from './../../models/passanger.interface';
 export class PassangerFormComponent {
     @Input()
     detail: Passanger;
+
+    verifyCheckIn(checkedIn : boolean) {
+        if(checkedIn) {
+            this.detail.checkInDate = Date.now();
+        } 
+    }
 }
