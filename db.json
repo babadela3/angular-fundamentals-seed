@@ -1,1 +1,31 @@
-{}
+{
+  "passangers": [
+    {
+      "name": "Bianca",
+      "id": 1,
+      "checkIn": false,
+      "baggage": "hand-only"
+    },
+    {
+      "id": 2,
+      "name": "Sam",
+      "checkIn": true,
+      "checkInDate": 1490742000000,
+      "baggage": ""
+    },
+    {
+      "id": 3,
+      "name": "Bob",
+      "checkIn": true,
+      "checkInDate": 1490742000000,
+      "baggage": ""
+    },
+    {
+      "id": 4,
+      "name": "Tom",
+      "checkIn": false,
+      "checkInDate": null,
+      "baggage": ""
+    }
+  ]
+}
