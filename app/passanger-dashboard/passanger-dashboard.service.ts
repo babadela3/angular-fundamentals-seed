@@ -1,4 +1,4 @@
-import { Http, Response } from "@angular/http"; 
+import { Http, Response, Headers, RequestOptions } from "@angular/http"; 
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 
@@ -18,7 +18,13 @@ export class PassangerDashboardService {
     }
 
     updatePassanger(passanger: Passanger): Observable<Passanger>{
-        return this.http.put(`${'/api/passangers'}/${passanger.id}`, passanger)
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+        let options = new RequestOptions({
+            headers : headers
+        });
+        return this.http.put(`${'/api/passangers'}/${passanger.id}`, passanger, options)
             .map((response : Response) => response.json());
     }
 
