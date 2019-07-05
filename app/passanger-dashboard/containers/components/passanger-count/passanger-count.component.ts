@@ -5,7 +5,7 @@ import { Passanger } from './../../models/passanger.interface';
     selector: 'passanger-count',
     template: `
     <div>
-        Check-in passangers: {{ getCheckInPassangers() }} / {{ items.length }}
+        Check-in passangers: {{ items?.length }}
     </div>
     `
 

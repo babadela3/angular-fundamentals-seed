@@ -10,7 +10,7 @@ import { PassangerDashboardService} from './../../passanger-dashboard.service';
             <passanger-count 
                 [items]="passangers">
             </passanger-count>
-            <h1>Airline passagers {{ passangers.length }}</h1>
+            <h1>Airline passagers {{ passangers?.length }}</h1>
             <passanger-detail
                 *ngFor="let passanger of passangers"
                 [detail]="passanger"
@@ -24,7 +24,11 @@ export class PassangerDashboardComponent implements OnInit{
     passangers: Passanger[]; 
     constructor(private passangerService: PassangerDashboardService) {}
     ngOnInit() {
-        this.passangers = this.passangerService.getPassanger();
+        this.passangerService.getPassanger()
+            .subscribe((data: Passanger[]) => {
+                console.log("Data:",data)
+                this.passangers = data;
+            });
     }
 
     handleEdit(event : Passanger){
