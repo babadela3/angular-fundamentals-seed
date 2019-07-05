@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: "app-home",
     template: `
     <div class="app">
-      Not found page!
+      Not found page, <a routerLink="/"> go home </a>!
     </div>
   `
 })
