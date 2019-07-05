@@ -27,19 +27,10 @@ import { Passanger } from './../../models/passanger.interface';
 
         <div>
             <input
-                type="radio"
-                [value]="true"
+                type="checkbox"
                 name="checkIn"
                 [ngModel]="detail?.checkIn"
                 (ngModelChange)=verifyCheckIn($event)>
-                Yes
-            <input
-                type="radio"
-                [value]="false"
-                name="checkIn"
-                [ngModel]="detail?.checkIn"
-                (ngModelChange)=verifyCheckIn($event)>
-                No
         </div>
 
         <div *ngIf="form.value.checkIn">
