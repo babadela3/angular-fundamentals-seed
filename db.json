@@ -5,35 +5,28 @@
       "name": "Bina",
       "checkIn": true,
       "checkInDate": 1490742000000,
-      "children": [
-        {
-          "name": "Sally",
-          "age": 12
-        },
-        {
-          "name": "Rick",
-          "age": 7
-        }
-      ]
+      "baggage": ""
+    },
+    {
+      "id": 2,
+      "name": "Sam",
+      "checkIn": true,
+      "checkInDate": 1490742000000,
+      "baggage": ""
     },
     {
       "id": 3,
       "name": "Bob",
       "checkIn": true,
       "checkInDate": 1490742000000,
-      "children": null
+      "baggage": ""
     },
     {
       "id": 4,
       "name": "Tom",
       "checkIn": false,
       "checkInDate": null,
-      "children": [
-        {
-          "name": "Mason",
-          "age": 2
-        }
-      ]
+      "baggage": ""
     }
   ]
 }
