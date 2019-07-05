@@ -12,8 +12,18 @@ export class PassangerDashboardService {
         console.log(http);
     }
 
-    getPassanger(): Observable<Passanger[]>{
+    getPassangers(): Observable<Passanger[]>{
         return this.http.get('/api/passangers')
+            .map((response : Response) => response.json());
+    }
+
+    updatePassanger(passanger: Passanger): Observable<Passanger>{
+        return this.http.put(`${'/api/passangers'}/${passanger.id}`, passanger)
+            .map((response : Response) => response.json());
+    }
+
+    deletePassanger(passanger: Passanger): Observable<Passanger>{
+        return this.http.delete(`${'/api/passangers'}/${passanger.id}`)
             .map((response : Response) => response.json());
     }
 }
