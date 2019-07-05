@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { Passanger } from "./containers/models/passanger.interface";
 
@@ -16,7 +18,8 @@ export class PassangerDashboardService {
     getPassangers(): Promise<Passanger[]>{
         return this.http.get('/api/passangers')
             .toPromise()
-            .then((response : Response) => response.json());
+            .then((response : Response) => response.json())
+            .catch((error: any) => Observable.throw(error.json()));
     }
 
     updatePassanger(passanger: Passanger): Observable<Passanger>{
@@ -27,11 +30,13 @@ export class PassangerDashboardService {
             headers : headers
         });
         return this.http.put(`${'/api/passangers'}/${passanger.id}`, passanger, options)
-            .map((response : Response) => response.json());
+            .map((response : Response) => response.json())
+            .catch((error: any) => Observable.throw(error.json()));
     }
 
     deletePassanger(passanger: Passanger): Observable<Passanger>{
         return this.http.delete(`${'/api/passangers'}/${passanger.id}`)
-            .map((response : Response) => response.json());
+            .map((response : Response) => response.json())
+            .catch((error: any) => Observable.throw(error.json()));
     }
 }
