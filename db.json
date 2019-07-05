@@ -2,7 +2,7 @@
   "passangers": [
     {
       "id": 1,
-      "name": "Andrei",
+      "name": "Bina",
       "checkIn": true,
       "checkInDate": 1490742000000,
       "children": [

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 import { Passanger } from "./containers/models/passanger.interface";
 
@@ -12,9 +13,10 @@ export class PassangerDashboardService {
         console.log(http);
     }
 
-    getPassangers(): Observable<Passanger[]>{
+    getPassangers(): Promise<Passanger[]>{
         return this.http.get('/api/passangers')
-            .map((response : Response) => response.json());
+            .toPromise()
+            .then((response : Response) => response.json());
     }
 
     updatePassanger(passanger: Passanger): Observable<Passanger>{
